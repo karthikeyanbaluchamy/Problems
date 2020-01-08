@@ -1,0 +1,39 @@
+package com.study.problems;
+
+import java.util.Stack;
+
+public class BackspaceString {
+	
+	 public boolean backspaceCompare(String S, String T) {
+		 
+		 String test=check(S);
+		 String test1=check(T);
+	        System.out.println(test);
+	        System.out.println(test1);
+		 return test.equals(test1);
+	    }
+	 
+	 public String check(String a) {
+		 
+		 Stack<Character>  st = new Stack<Character>();
+			for(char ch:a.toCharArray()) {
+				if(ch != '#') {
+					st.push(ch);
+				}
+				else if(!st.isEmpty()) {
+					st.pop();
+				}
+			}
+		 
+		 return String.valueOf(st);
+	 }
+
+	public static void main(String[] args) {
+		BackspaceString bs = new BackspaceString();
+		
+		boolean test=bs.backspaceCompare("a##c", "#a#c");
+		
+		System.out.println(test);
+	}
+
+}
